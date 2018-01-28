@@ -16,7 +16,7 @@ export class TabsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.tabTeacher = TeacherPage;
     this.tabClassroom = ClassroomPage;
-    this.tabSetting = SettingPage;
+    //this.tabSetting = SettingPage;
   }
 
   ionViewDidLoad() {

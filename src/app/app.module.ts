@@ -22,6 +22,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { UserProvider } from '../providers/user/user';
 import { LoginProvider } from '../providers/login/login';
 import { ClassroomProvider } from '../providers/classroom/classroom';
+import { CheckinProvider } from '../providers/checkin/checkin';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { ClassroomProvider } from '../providers/classroom/classroom';
     DataServiceProvider,
     UserProvider,
     LoginProvider,
-    ClassroomProvider
+    ClassroomProvider,
+    CheckinProvider
   ]
 })
 export class AppModule {}

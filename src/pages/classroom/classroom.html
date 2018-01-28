@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Classroom</ion-title>
+    <ion-title>ห้องเรียน</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item  *ngFor="let classList of classLists " (click)="goCreate()">
+    <button ion-item  *ngFor="let classList of classLists " (click)="goCreate(classList)">
         {{classList.ID_Course}} [{{classList.Name_Class}}] ภาคเรียนที่ {{classList.Term}}
       <p>{{classList.Course}}</p>
       <ion-badge item-end>{{classList.count_student}}</ion-badge>

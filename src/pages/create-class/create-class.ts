@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,LoadingController,AlertController} from 'ionic-angular';
 import { CheckinPage } from '../../pages/checkin/checkin';
 import { HomePage } from '../../pages/home/home';
-
-/**
- * Generated class for the CreateClassPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ClassroomProvider } from '../../providers/classroom/classroom';
 
 @IonicPage()
 @Component({
@@ -16,18 +10,80 @@ import { HomePage } from '../../pages/home/home';
   templateUrl: 'create-class.html',
 })
 export class CreateClassPage {
-  create_class: Array<{ID_create_class:string, ID_Class:string,Course:string, Date_create:string }>=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ID_Class: string;
+  create_class: Array<any> = [];
+  //create_class: Array<{ID_create_class:string, ID_Class:string,Course:string, Date_create:string }>=[];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public classPro: ClassroomProvider,
+    public loadCtrl: LoadingController,
+    public alertCtrl: AlertController
+  ) {
 
-    this.create_class.push({ ID_create_class: '3', ID_Class: '3',Course:'เทคโนโลยีเว็บ', Date_create: '2017-01-01 16:00' });
-    this.create_class.push({ ID_create_class: '2', ID_Class: '5',Course:'เทคโนโลยีเว็บ2', Date_create: '2017-01-01 16:00' });
-  }
-  goCheckin(classroom) { 
-    this.navCtrl.push(HomePage, classroom);
-  }
+    let classroom = this.navParams.get('classroom');
+    this.ID_Class = classroom.ID_Class;
+    console.log('ID_Class ' + this.ID_Class)
+    
+    //Confirm
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateClassPage');
+
+    //Conf
   }
+  goCheckin(create_class:any) { 
+    this.navCtrl.push(CheckinPage, { create_class:create_class});
+  }
+  createPeriod() { 
+//Confirm
+          let alert = this.alertCtrl.create({
+            title: 'ยืนยันการสร้างคาบเรียน',
+            message: 'คุณต้องการสร้างคาบเรียน?',
+            buttons: [
+              {
+                text: 'ยกเลิก',
+                role: 'cancel',
+                handler: () => {
+                  console.log('Cancel clicked');
+                }
+              },
+              {
+                text: 'สร้างคาบเรียน',
+                handler: () => {
+                  console.log('Buy clicked');
+                  this.classPro.createPreroid(this.ID_Class)
+                  .then((data: any) => {
+                    if (data.success) { 
+                      console.log(data);
+                      this.ionViewWillEnter();
+                    }
+                  }, (error) => { 
+                    console.log('Load Fail');
+                  })
+
+                }
+              }
+            ]
+          });
+          alert.present();    
+          //Confirm    
+
+  }
+  ionViewWillEnter() {
+    let loader = this.loadCtrl.create({ content: 'Loading....', spinner: 'dots' });
+    loader.present();
+    this.classPro.getCreateClass(this.ID_Class)
+      .then((data: any) => {
+        if (data.success) { 
+          console.log(data);
+          loader.dismiss();
+          let rows = data.rows
+          this.create_class = data.rows;
+        }
+      }, (error) => { 
+        console.log('Load Fail');
+      })
+
+  
+}
 
 }

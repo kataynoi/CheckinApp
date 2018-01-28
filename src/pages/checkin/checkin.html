@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Checkin</ion-title>
+    <ion-title>เช็คชื่อ</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+    <div padding>
+        <button ion-button color="primary" block (click)="scan()">ScanBarcode</button>
+    </div>
+    <ion-list>
+        <button ion-item  *ngFor="let checkin of studentCheckin" >
+          
+          <p>{{checkin.Name_Std}}</p>
+          <ion-badge item-end>{{checkin.Checkin}}</ion-badge>
+        </button>
+      </ion-list>
 </ion-content>

@@ -6,18 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>CreateClass</ion-title>
+  <ion-navbar color='primary'>
+    <ion-title>ห้องเรียน</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+    <ion-fab right bottom>
+        <button ion-fab mini (click)="createPeriod()"><ion-icon name="ios-add-circle-outline"></ion-icon></button>
+    </ion-fab>
     <ion-list>
-        <button ion-item  *ngFor="let create_class of create_class" (click)="goCheckin(create_class)">
-          <p>{{create_class.ID_Class}}</p>
-          <p>{{create_class.Date_create}}</p>
+        <button ion-item  *ngFor="let class of create_class" (click)="goCheckin(class)">
+          <p>{{class.n}}. 
+          {{class.Date_create}}</p>
+          <ion-badge item-end>{{class.Student_checkin}}</ion-badge>
         </button>
       </ion-list>
 </ion-content>

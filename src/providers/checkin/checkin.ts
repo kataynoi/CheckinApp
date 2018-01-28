@@ -1,22 +1,30 @@
-import { Injectable,Inject } from '@angular/core';
-import { Http ,Headers, RequestOptions  } from '@angular/http';
+import { Injectable, Inject } from '@angular/core';
+import { Http ,Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+/*
+  Generated class for the CheckinProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
 @Injectable()
-export class ClassroomProvider {
+export class CheckinProvider {
 
   constructor(public http: Http,@Inject('API_URL') public url:string) {
     
   }
-  createPreroid(ID_class:string) { 
+ 
+ 
+ getStudentCheckin (ID_Class: string,ID_create_class) { 
     return new Promise((resolve, reject) => { 
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      let body = { ID_Class: ID_class};
+      let body = { ID_Class: ID_Class,ID_create_class:ID_create_class};
 
       //this.http.post(`${this.url}/users/login`, body, options)
 
-      this.http.post(this.url+'/service/createPeriod',body,options)
+      this.http.post(this.url+'/service/getStudentCheckin',body,options)
         .map(res => res.json())
         .subscribe(data => { 
           resolve(data);
@@ -26,18 +34,18 @@ export class ClassroomProvider {
     });{
 
      }
-}
+ }
+  setStudentCheckin(ID_create_class:string, ID_Std:string) { 
 
-  //getCheckinClass
-getClassroom(id:string) { 
+
     return new Promise((resolve, reject) => { 
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      let body = { id: id};
+      let body = { ID_create_class: ID_create_class, ID_Std : ID_Std};
 
       //this.http.post(`${this.url}/users/login`, body, options)
 
-      this.http.post(this.url+'/service/getClassroom',body,options)
+      this.http.post(this.url+'/service/checkinStudent',body,options)
         .map(res => res.json())
         .subscribe(data => { 
           resolve(data);
@@ -47,23 +55,5 @@ getClassroom(id:string) {
     });{
 
      }
-}
-
-getCreateClass(ID_Class:string) { 
-  return new Promise((resolve, reject) => { 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let body = { ID_Class: ID_Class};
-
-    this.http.post(this.url+'/service/getCreateClass',body,options)
-      .map(res => res.json())
-      .subscribe(data => { 
-        resolve(data);
-      }, error => { 
-        reject(error);
-      })
-  });{
-
-   }
-}  
+  }  
 }
