@@ -28,18 +28,22 @@ export class LoginPage {
   doLogin() { 
     this.loginProvider.doLogin(this.username, this.password)
       .then((data: any) => {
-        if (data.success) { 
+        if (data.success) {
           let id = data.rows.id;
           let name = data.name
-          console.log("ID : "+id);
+          console.log("ID : " + id);
           localStorage.setItem('id', id);
           localStorage.setItem('name', data.rows.name);
           localStorage.setItem('subject', data.rows.subject);
           localStorage.setItem('faculty', data.rows.faculty);
+          localStorage.setItem('email', data.rows.email);
+          localStorage.setItem('tel', data.rows.tel);
           this.navCtrl.setRoot(TabsPage);
+        } else { 
+          alert('Username หรือ Password ไม่ถูกต้อง');
         }
       }, (error) => { 
-        alert('Login Fail')
+        alert('ไม่สามารถเชื่อมต่อ Server ได้')
       })
 
   }

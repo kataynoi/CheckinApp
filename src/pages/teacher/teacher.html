@@ -14,22 +14,18 @@
 
 
 <ion-content padding>
-    <ion-list>
-        <ion-item >
-                <ion-icon name="md-at" item-start color="primary"></ion-icon>
-                รหัสอาจารย์ : {{Teacher.ID_Teacher}}
+    <ion-card>
+      <ion-item>
+      <h1 color="primary"> ข้อมูลอาจารย์ </h1>
+      </ion-item>
+      <ion-item>
+            <ion-icon name="ios-contact-outline" item-start large color="primary"></ion-icon>
+            <h2>อาจารย์ {{Teacher.Name_Teacher }}</h2>
+            <p><ion-badge color="light">สาขา </ion-badge> {{ Teacher.Subject }}</p>
+            <p><ion-badge color="light">คณะ </ion-badge> {{ Teacher.Faculty }}</p>
+            <p><ion-badge color="light">อีเมลล์ </ion-badge> {{ Teacher.Email }}</p>
+            <p><ion-badge color="light">เบอร์โทร </ion-badge>  {{ Teacher.Tel }}</p>
           </ion-item>
-          <ion-item>
-                <ion-icon name="leaf" item-start></ion-icon>
-                อาจารย์ : {{Teacher.Name_Teacher}}
-          </ion-item>
-          <ion-item>
-                <ion-icon name="leaf" item-start></ion-icon>
-                สาขา : {{Teacher.Subject}}
-          </ion-item>
-          <ion-item>
-                <ion-icon name="leaf" item-start></ion-icon>
-                คณะ : {{Teacher.Faculty}}
-          </ion-item>
-    </ion-list>
+    </ion-card>
+
 </ion-content>

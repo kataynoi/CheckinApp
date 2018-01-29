@@ -24,7 +24,10 @@ export class TeacherPage {
   {
     this.Teacher = {
       Name_Teacher: localStorage.getItem('name'), ID_Teacher: localStorage.getItem('id'
-      ), Subject: localStorage.getItem('subject'), Faculty: localStorage.getItem('faculty')
+      ), Subject: localStorage.getItem('subject')
+      , Faculty: localStorage.getItem('faculty')
+      , Email: localStorage.getItem('email')
+      , Tel: localStorage.getItem('tel')
     }
 
   }
