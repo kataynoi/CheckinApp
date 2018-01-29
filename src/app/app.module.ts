@@ -24,6 +24,7 @@ import { LoginProvider } from '../providers/login/login';
 import { ClassroomProvider } from '../providers/classroom/classroom';
 import { CheckinProvider } from '../providers/checkin/checkin';
 
+//localStorage.getItem('url');
 
 @NgModule({
   declarations: [
@@ -61,7 +62,9 @@ import { CheckinProvider } from '../providers/checkin/checkin';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide:'API_URL',useValue:'http://192.168.1.7:8888'},
+   // {provide:'API_URL',useValue:'http://192.168.1.7/index.php'},
+   // {provide:'API_URL',useValue:'http://192.168.43.72/index.php'},
+    {provide:'API_URL',useValue:'http://10.0.0.117:8888/index.php'},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
     Toast,

@@ -51,7 +51,8 @@ this.checkinPro.setStudentCheckin(this.ID_create_class,this.ID_Std)
     console.log(data);
     this.ionViewWillEnter();
   }
-}, (error) => { 
+  }, (error) => { 
+    this.ionViewWillEnter();
   console.log('Load Fail');
 })      
 //End       
@@ -71,13 +72,16 @@ this.checkinPro.setStudentCheckin(this.ID_create_class,this.ID_Std)
     loader.present();
     this.checkinPro.getStudentCheckin(this.ID_Class,this.ID_create_class)
       .then((data: any) => {
-        if (data.success) { 
+        if (data.success) {
           console.log(data);
           loader.dismiss();
           let rows = data.rows
           this.studentCheckin = data.rows;
+        } else { 
+          loader.dismiss();
         }
       }, (error) => { 
+        loader.dismiss();
         console.log('Load Fail');
       })
 

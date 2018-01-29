@@ -53,10 +53,12 @@ export class CreateClassPage {
                   this.classPro.createPreroid(this.ID_Class)
                   .then((data: any) => {
                     if (data.success) { 
-                      console.log(data);
                       this.ionViewWillEnter();
+                      console.log(data);
+                      //this.getCreateClass();
                     }
-                  }, (error) => { 
+                    }, (error) => { 
+                    this.ionViewWillEnter();
                     console.log('Load Fail');
                   })
 
@@ -68,6 +70,8 @@ export class CreateClassPage {
           //Confirm    
 
   }
+
+
   ionViewWillEnter() {
     let loader = this.loadCtrl.create({ content: 'Loading....', spinner: 'dots' });
     loader.present();
@@ -78,8 +82,11 @@ export class CreateClassPage {
           loader.dismiss();
           let rows = data.rows
           this.create_class = data.rows;
+        } else {
+          loader.dismiss();
         }
       }, (error) => { 
+        loader.dismiss();
         console.log('Load Fail');
       })
 
