@@ -80,7 +80,7 @@ export class CreateClassPage {
         if (data.success) { 
           console.log(data);
           loader.dismiss();
-          let rows = data.rows
+//        let rows = data.rows
           this.create_class = data.rows;
         } else {
           loader.dismiss();

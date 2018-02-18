@@ -17,7 +17,7 @@ import { ClassroomPage } from '../pages/classroom/classroom';
 import { TeacherPage } from '../pages/teacher/teacher';
 import { CheckinPage } from '../pages/checkin/checkin';
 import { CreateClassPage } from '../pages/create-class/create-class';
-
+//Provider
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { UserProvider } from '../providers/user/user';
 import { LoginProvider } from '../providers/login/login';
@@ -62,9 +62,9 @@ import { CheckinProvider } from '../providers/checkin/checkin';
   providers: [
     StatusBar,
     SplashScreen,
-   // {provide:'API_URL',useValue:'http://192.168.1.7/index.php'},
-   // {provide:'API_URL',useValue:'http://192.168.43.72/index.php'},
-    {provide:'API_URL',useValue:'http://10.0.0.117:8888/index.php'},
+   {provide:'API_URL',useValue:'http://192.168.1.7:8888/index.php'},
+    //{provide:'API_URL',useValue:'http://192.168.43.76/index.php'},
+    //{provide:'API_URL',useValue:'http://10.0.0.117:8888/index.php'},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
     Toast,

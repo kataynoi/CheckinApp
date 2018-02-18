@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SettingPage } from '../setting/setting';
+//import { SettingPage } from '../setting/setting';
 import { ClassroomPage } from '../classroom/classroom';
 import { TeacherPage } from '../teacher/teacher';
 

@@ -21,9 +21,11 @@
         <button ion-item  *ngFor="let checkin of studentCheckin" >
           
           <p>{{checkin.ID_Std}} {{checkin.Name_Std}}</p>
-          <p>{{checkin.Date}}</p>
-          <ion-badge item-end *ngIf="checkin.Checkin===true">มาเรียน</ion-badge>
-          <ion-badge item-end *ngIf="checkin.Checkin===false" color="danger">ขาดเรียน</ion-badge>
+      
+          <ion-badge item-end *ngIf="checkin.Checkin==2">มาเรียน</ion-badge>
+          <ion-badge item-end *ngIf="checkin.Checkin==1" color="danger">ขาดเรียน</ion-badge>
+          <ion-badge item-end *ngIf="checkin.Checkin==3" color="secondary">สาย</ion-badge>
+          <ion-badge item-end *ngIf="checkin.Checkin==4" color="secondary">ลา</ion-badge>
         
         </button>
       </ion-list>

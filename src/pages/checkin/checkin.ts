@@ -75,7 +75,7 @@ this.checkinPro.setStudentCheckin(this.ID_create_class,this.ID_Std)
         if (data.success) {
           console.log(data);
           loader.dismiss();
-          let rows = data.rows
+          //let rows = data.rows
           this.studentCheckin = data.rows;
         } else { 
           loader.dismiss();
